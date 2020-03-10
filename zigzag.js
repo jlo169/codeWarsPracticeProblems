@@ -23,3 +23,41 @@
 // Y A   H R
 // P     I
 
+// /**
+//  * @param {string} s
+//  * @param {number} numRows
+//  * @return {string}
+//  */
+
+var convert = function(s, numRows) {
+  const zigzag = [];
+  let down = true;
+  let zigCounter = 0;
+  let result = '';
+  
+  for (let i = 0; i < s.length; i++) {
+    if (zigzag[zigCounter]) {
+      zigzag[zigCounter] = zigzag[zigCounter] + s[i];
+    } else {
+      zigzag[zigCounter] = s[i];
+    }
+    
+    if (down) {
+      zigCounter++;
+    } else {
+      zigCounter--;
+    }
+    
+    if (zigCounter === (numRows - 1)) {
+      down = false;
+    } else if (zigCounter === 0) {
+      down = true;
+    }
+  }
+  
+  for (let i = 0; i < zigzag.length; i++) {
+    result = result + zigzag[i];
+  }
+  
+  return result;
+}
