@@ -9,3 +9,23 @@
 // Note:
 
 // Although the above answer is in lexicographical order, your answer could be in any order you want.
+
+// /**
+//  * @param {string} digits
+//  * @return {string[]}
+//  */
+
+var letterCombinations = function(digits) {
+  const letterSheet = {
+    2: 'abc',
+    3: 'def',
+    4: 'ghi',
+    5: 'jkl',
+    6: 'mno',
+    7: 'pqrs',
+    8: 'tuv',
+    9: 'wxyz'
+  };
+
+
+};
