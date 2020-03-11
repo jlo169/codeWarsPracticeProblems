@@ -28,22 +28,28 @@
 
 var isValid = function(s) {
   if (!s) true;
-  const brackets = {
-    '(': 0,
-    '{': 0,
-    '[': 0
+  const brackets = [];
+  const openClose = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
   }
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === '(' || s[i] === '{' || s[i] === '[') {
-      brackets[s[i]]++;
-    }
-    if (s[i] === ')' || s[i] === '}' || s[i] === ']') {
-      brackets[s[i]]--;
-      if (brackets[s[i]] < 0) {
+      brackets.push(s[i]);
+    } else if (s[i] === ')' || s[i] === '}' || s[i] === ']') {
+      const end = brackets.length - 1;
+      if (brackets[end] === openClose[s[i]]) {
+        brackets.pop()
+      } else {
         return false;
       }
     }
   }
-  return true;
+  if (brackets.length) {
+    return false;
+  } else {
+    return true;
+  }
 };
